@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	   http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop.xsd">
+	   
+	<!-- 컨트롤러를 자동으로 등록할 수 있도록 -->
+	<context:component-scan base-package="jung"></context:component-scan>
+
+	<!--css 자동 등록  -->
+	<mvc:resources location="/css/**" mapping="/css/**"/>
+	<mvc:resources location="/file/**" mapping="/file/**" />
+	<mvc:resources location="/js/**" mapping="/js/**"/>
+	
+	<!-- Map을 이용해 데이터를 주고 받을 수 있도록 -->
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="jung.won.cheol.root.CustomMapArgumentResolver"></bean>		
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	
+	<!-- ModelAndView의 이름을 그대로 URL로 사용 -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2" 
+    	p:viewClass="org.springframework.web.servlet.view.JstlView" 
+    	p:prefix="/WEB-INF/jsp/" p:suffix=".jsp">
+   	</bean>
+   <!--  	 tiles  -->  	
+   <!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<property name="order" value="1"></property> 
+	</bean> 
+	Tiles 설정
+     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property> 
+	</bean> -->
+	
+	 <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+	 
+	 <bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+    <property name="contentType" value="application/json;charset=UTF-8"></property>
+</bean>
+
+
+
+    
+  <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="username" value="dlrhkdxod@gmail.com" />
+    <property name="password" value="dlrhkdgh1!" />
+    <property name="javaMailProperties">
+    <props>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+    </props>
+    </property> -->
+  <!-- </bean> -->
+    
+    
+    
+</beans>
