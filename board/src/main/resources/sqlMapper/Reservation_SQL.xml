@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservation">
+
+ 
+	<!-- 해당 스케쥴 좌석 확인 -->
+	<select resultType="hashmap" parameterType="hashmap" id="selectReservation">
+	<![CDATA[
+                select a.SEAT from airplane_ticket a,airplane_member b 
+				where a.flying_number=1
+	]]>
+	</select>
+
+
+        </mapper>

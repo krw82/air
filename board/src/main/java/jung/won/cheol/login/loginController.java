@@ -16,27 +16,6 @@ import jung.won.cheol.root.CommandMap;
 
 @Controller
 public class loginController {
-	@Resource(name="loginService")
-	private loginservice loginservice;
 	
-	@RequestMapping(value="login") 
-	public ModelAndView loginForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("views/loginForm");
-		return mv;
-		
-	}
-	
-	@RequestMapping(value="login", method=RequestMethod.POST) 
-	public ModelAndView login(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		HttpSession session= request.getSession();
-		Map<String,Object>member = loginservice.good(commandMap.getMap());
-		session.setAttribute("MEMBER_ID", member.get("ID"));
-		mv.addObject("MEMBER",member);
-		mv.setViewName("views/loginForm");
-		return mv;
-		
-	}
 
 }
