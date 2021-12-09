@@ -7,10 +7,18 @@
 	<!-- 해당 스케쥴 좌석 확인 -->
 	<select resultType="hashmap" parameterType="hashmap" id="selectReservation">
 	<![CDATA[
-                select a.SEAT from airplane_ticket a,airplane_member b 
+                select * from airplane_ticket a
 				where a.flying_number=1
 	]]>
 	</select>
+	<!-- 스케쥴 확인 -->
+	<select resultType="hashmap" parameterType="hashmap" id="selectAir">
+	<![CDATA[
+                select * from airplane a
+				where a.flying_number=1
+	]]>
+	</select>
+	
 
 
         </mapper>

@@ -14,5 +14,10 @@ public class reservationDao extends rootDao{
 	public List<Map<String, Object>> selectreservation(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("reservation.selectReservation", map);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectAir(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("reservation.selectAir", map);
+	}
+	
 }
