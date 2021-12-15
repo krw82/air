@@ -18,6 +18,30 @@
 				where a.flying_number=1
 	]]>
 	</select>
+	<!-- 해당 아이디정보 검색 -->
+	<select resultType="hashmap" parameterType="hashmap" id="selectId">
+	<![CDATA[
+                select * from airplane_member where ID='21b'
+	]]>
+	</select>
+	
+	<insert  parameterType="hashmap" id="insertTicket">
+	<![CDATA[
+                 insert into  airplane_ticket values (
+                 #{SEAT},
+                 #{TICKET_NUMBER}||AJ_SEQ.NEXTVAL,
+                 'N',
+                 #{FLYING_NUMBER},
+                 #{MEMBER_NUMBER}
+                 )
+	]]>
+	</insert>
+	
+	<delete  parameterType="hashmap" id="deleteTicket">
+	<![CDATA[
+                 delete from airplane_ticket where SEAT=#{SEAT} and FLYING_NUMBER=#{FLYING_NUMBER}
+	]]>
+	</delete>
 	
 
 

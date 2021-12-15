@@ -27,4 +27,22 @@ public class reservationServiceImpl implements reservationService{
 		return reservationDao.selectAir(map);
 	}
 
+	@Override
+	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reservationDao.selectId(map);
+	}
+
+	@Override
+	public void insertTicket(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		reservationDao.insertTicket(map);
+	}
+
+	@Override
+	public void FalTicket(Map<String, Object> map) throws Exception {
+		reservationDao.falTicket(map);
+		
+	}
+
 }

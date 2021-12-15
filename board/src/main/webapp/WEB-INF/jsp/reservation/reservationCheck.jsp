@@ -7,16 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="/AJ/pay"> 
 ID : ${ID}
-스케쥴번호 : ${FLYING_NUMBER}
-비행기 : ${airplane}
-출발일 : ${ }
-도착일 :
-출발지 :
-도착지 :
-가격 :
+<br>
+스케쥴번호 : ${MAP.FLYING_NUMBER}
+<br>
+비행기 : ${MAP.AIRPLANE}
+<br>
+출발일 :${MAP.START_DATE}
+<br>
+도착일 :${MAP.END_DATE}
+<br>
+출발지 :${MAP.START_POINT}
+<br>
+경유지 :${MAP.STOPOVER}
+<br>
+도착지 :${MAP.END_POINT}
+<br>
+가격 :${MAP.PRICE}
+<br>
+좌석 :${SEAT}
 
+<input type="hidden" value="${MAP.FLYING_NUMBER}" name="FLYING_NUMBER">
+<input type="hidden" value="${SEAT}" name="SEAT">
 
+<input type="submit" value="다음">
+</form>
 
 </body>
 </html>

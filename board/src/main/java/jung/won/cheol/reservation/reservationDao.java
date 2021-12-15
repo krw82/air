@@ -20,4 +20,17 @@ public class reservationDao extends rootDao{
 		return (Map<String, Object>) selectOne("reservation.selectAir", map);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("reservation.selectId", map);
+	}
+	
+	public void insertTicket(Map<String, Object> map) throws Exception {
+	      insert("reservation.insertTicket", map);
+	   }
+	
+	public void falTicket(Map<String, Object> map) throws Exception {
+	      insert("reservation.deleteTicket", map);
+	   }
+	
 }

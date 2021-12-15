@@ -56,10 +56,10 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<form action="">
+	<form action="/AJ/reservationCheck" method="get">
 	
  		 	<c:forEach var="list" items="${arr}" begin="11"  varStatus="status">
-		       <input type="checkbox" name= "check" value="${status.index}" class="check">  
+		       <input type="radio" name= "check" value="${status.index}" class="check">  
 		      <c:if test="${status.count%5==0}"> 
 		      <br>
 		      </c:if>
