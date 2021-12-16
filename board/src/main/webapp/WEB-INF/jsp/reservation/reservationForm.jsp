@@ -24,8 +24,11 @@ $(document).ready(function() {
 		        url :'<c:url value="/SeatAjax"/>',
 		        data : "data",
 		        success : function(data){
+		        	
+		        	$('input[name=check]').attr("disabled",false);
 		        	 $.each(${SEAT}, function(index, item){
 		       		  check[item-11].disabled=true;
+		       		
 		       		 
 		       	  });
 		        },
@@ -35,7 +38,7 @@ $(document).ready(function() {
 		    }
 		    
 		     });   
-		     alert('ss');
+		    
 		  
 		 	
 		  
@@ -65,8 +68,7 @@ $(document).ready(function() {
 		      </c:if>
 	        </c:forEach>
 	   
-	   ${fn:length(arr)}
- 		 	
+	   
 	        <br>
 	        
 	  <input type="submit" value="다음">

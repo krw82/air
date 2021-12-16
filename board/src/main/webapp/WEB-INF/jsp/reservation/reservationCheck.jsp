@@ -8,26 +8,54 @@
 </head>
 <body>
 <form action="/AJ/pay"> 
-ID : ${ID}
-<br>
-스케쥴번호 : ${MAP.FLYING_NUMBER}
-<br>
-비행기 : ${MAP.AIRPLANE}
-<br>
-출발일 :${MAP.START_DATE}
-<br>
-도착일 :${MAP.END_DATE}
-<br>
-출발지 :${MAP.START_POINT}
-<br>
-경유지 :${MAP.STOPOVER}
-<br>
-도착지 :${MAP.END_POINT}
-<br>
-가격 :${MAP.PRICE}
-<br>
-좌석 :${SEAT}
+<table border ="1">
+<tr>
+<th>
+ID 
+</th>
 
+<th>
+
+스케쥴번호
+</th>
+<th>
+비행기 
+</th>
+<th>
+출발일 
+</th>
+<th>
+도착일 
+</th>
+<th>
+출발지 
+</th>
+<th>
+경유지 
+</th>
+<th>
+도착지 
+</th>
+<th>
+가격 
+</th>
+<th>
+좌석 
+</th>
+<tr>
+<td> ${ID}</td>
+<td> ${MAP.FLYING_NUMBER}</td>
+<td> ${MAP.AIRPLANE}</td>
+<td>${MAP.START_DATE}</td>
+<td> ${MAP.END_DATE}</td>
+<td> ${MAP.START_POINT}</td>
+<td> ${MAP.STOPOVER}</td>
+<td> ${MAP.END_POINT}</td>
+<td>${MAP.PRICE}</td>
+<td>${SEAT}</td>
+
+</tr>
+</table>
 <input type="hidden" value="${MAP.FLYING_NUMBER}" name="FLYING_NUMBER">
 <input type="hidden" value="${SEAT}" name="SEAT">
 

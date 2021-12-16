@@ -61,7 +61,7 @@ public class reservationController {
 		List arr2= new ArrayList();
 		for (Map obj : board) {
 			arr2.add(obj.get("SEAT"));
-			System.out.println("ajax");
+			
 			
 		}
 		mv.addObject("SEAT", arr2);
