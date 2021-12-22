@@ -24,7 +24,7 @@
                 select * from airplane_member where ID='21b'
 	]]>
 	</select>
-	
+	<!-- 결제성공 -->
 	<insert  parameterType="hashmap" id="insertTicket">
 	<![CDATA[
                  insert into  airplane_ticket values (
@@ -36,13 +36,18 @@
                  )
 	]]>
 	</insert>
-	
+	<!-- 결제실패시 삭제 -->
 	<delete  parameterType="hashmap" id="deleteTicket">
 	<![CDATA[
                  delete from airplane_ticket where SEAT=#{SEAT} and FLYING_NUMBER=#{FLYING_NUMBER}
 	]]>
 	</delete>
 	
+	<select resultType="hashmap" parameterType="hashmap" id="selectTicket">
+	<![CDATA[
+               select * from airplane_ticket t,airplane a where t.flying_number=a.flying_number and t.flying_number='1'
+	]]>
+	</select>
 
 
         </mapper>

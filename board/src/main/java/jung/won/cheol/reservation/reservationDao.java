@@ -32,5 +32,10 @@ public class reservationDao extends rootDao{
 	public void falTicket(Map<String, Object> map) throws Exception {
 	      insert("reservation.deleteTicket", map);
 	   }
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectTicket(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>)selectOne("reservation.selectTicket", map);
+	   }
+	
 	
 }

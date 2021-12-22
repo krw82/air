@@ -45,4 +45,10 @@ public class reservationServiceImpl implements reservationService{
 		
 	}
 
+	@Override
+	public Map<String, Object> selectTicket(Map<String, Object> map) throws Exception {
+		
+		return reservationDao.selectTicket(map);
+	}
+
 }

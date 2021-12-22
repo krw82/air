@@ -13,4 +13,7 @@ public interface reservationService {
 	public void insertTicket(Map<String, Object> map) throws Exception;
 	
 	public void FalTicket(Map<String, Object> map) throws Exception;
+	
+	public  Map<String, Object> selectTicket(Map<String, Object> map) throws Exception;
+	
 }

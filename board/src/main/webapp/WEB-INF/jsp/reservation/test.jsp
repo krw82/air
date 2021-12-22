@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<img src="../../file/images.png" alt="이미지" />
 </body>
 </html>

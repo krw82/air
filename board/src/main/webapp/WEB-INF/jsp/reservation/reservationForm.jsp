@@ -60,21 +60,26 @@ $(document).ready(function() {
 </head>
 <body>
 	<form action="/AJ/reservationCheck" method="get">
-	
+	<center>
  		 	<c:forEach var="list" items="${arr}" begin="11"  varStatus="status">
-		       <input type="radio" name= "check" value="${status.index}" class="check">  
+ 		 		<img src="file/images.png" width="30">
+		       <input type="radio" name= "check" value="${status.index}" class="check" style="position: relative; top: 20px; right: 31px;">  
+		       
 		      <c:if test="${status.count%5==0}"> 
+		      <br>
 		      <br>
 		      </c:if>
 	        </c:forEach>
 	   
-	   
+	 </center>
+
+
 	        <br>
 	        
-	  <input type="submit" value="다음">
+	  <input type="submit" value="다음" style="float:right;">
 	 
 	   
 	  </form>
-
+ 
 </body>
 </html>
