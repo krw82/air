@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/AJ/pay"> 
+<form action="/pay?FLING_NUMBER=${MAP.FLYING_NUMBER }"> 
 <table border ="1">
 <tr>
 <th>

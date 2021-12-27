@@ -27,8 +27,9 @@ public class mainController {
 	public ModelAndView AriplaneSerch(CommandMap commandMap) throws Exception { //비행기 스케쥴 검색
 		ModelAndView mv = new ModelAndView();
 		List<Map<String,Object>>board = mainservice.selectAll(commandMap.getMap());	
-		mv.addObject("board",board);
-		mv.setViewName("");
+		mv.addObject("list",board);
+		mv.setViewName("search/search");
+		
 		return mv;
 		
 	}
@@ -37,7 +38,7 @@ public class mainController {
 	public ModelAndView AriplaneSerchAjax(CommandMap commandMap) throws Exception { //비행기 스케쥴 검색
 		ModelAndView mv = new ModelAndView("jsonView");
 		List<Map<String,Object>>board = mainservice.selectAll(commandMap.getMap());	
-		mv.addObject("board",board);
+		mv.addObject("list",board);
 		return mv;
 		
 	}

@@ -8,20 +8,20 @@
 	<select resultType="hashmap" parameterType="hashmap" id="selectReservation">
 	<![CDATA[
                 select * from airplane_ticket a
-				where a.flying_number=1
+				where a.flying_number=#{FLYING_NUMBER}
 	]]>
 	</select>
 	<!-- 스케쥴 확인 -->
 	<select resultType="hashmap" parameterType="hashmap" id="selectAir">
 	<![CDATA[
                 select * from airplane a
-				where a.flying_number=1
+				where a.flying_number=#{FLYING_NUMBER}
 	]]>
 	</select>
 	<!-- 해당 아이디정보 검색 -->
 	<select resultType="hashmap" parameterType="hashmap" id="selectId">
 	<![CDATA[
-                select * from airplane_member where ID='21b'
+                select * from airplane_member where ID=#{ID}
 	]]>
 	</select>
 	<!-- 결제성공 -->
@@ -43,9 +43,10 @@
 	]]>
 	</delete>
 	
+	
 	<select resultType="hashmap" parameterType="hashmap" id="selectTicket">
 	<![CDATA[
-               select * from airplane_ticket t,airplane a where t.flying_number=a.flying_number and t.flying_number='1'
+               select * from airplane_ticket t,airplane a where t.flying_number=a.flying_number and t.flying_number=#{FLTING_NUMBER} and t.MEMBER_NUMBER=#{MEMBER_NUMBER}
 	]]>
 	</select>
 

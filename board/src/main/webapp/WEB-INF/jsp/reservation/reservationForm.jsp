@@ -21,7 +21,7 @@ $(document).ready(function() {
 			
 		     $.ajax({
 		        type : "GET",
-		        url :'<c:url value="/SeatAjax"/>',
+		        url :'<c:url value="/SeatAjax?flying_number=${flying_number}"/>',
 		        data : "data",
 		        success : function(data){
 		        	
@@ -59,7 +59,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<form action="/AJ/reservationCheck" method="get">
+	<form action="/reservationCheck" method="get">
 	<center>
  		 	<c:forEach var="list" items="${arr}" begin="11"  varStatus="status">
  		 		<img src="file/images.png" width="30">
@@ -75,8 +75,9 @@ $(document).ready(function() {
 
 
 	        <br>
+	      <input type="hidden" name="FLYING_NUMBER" value="${flying_number}">
 	        
-	  <input type="submit" value="다음" style="float:right;">
+	  <input type="submit" value="다음" style="float:right; margin-right: 700px;">
 	 
 	   
 	  </form>

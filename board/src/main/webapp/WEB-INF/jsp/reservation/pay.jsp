@@ -38,7 +38,7 @@
         if ( rsp.success ) {
             var msg = '결제가 완료되었습니다.';
            
-              location.href='/AJ/sendMail';  
+              location.href='/sendMail?FLYING_NUMBER=${FLYING_NUMBER}';  
         } else {
             var msg = '결제에 실패하였습니다.';
             location.href='/AJ/payFa';  

@@ -10,7 +10,7 @@ import jung.won.cheol.root.rootDao;
 public class mainDao extends rootDao{
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectAll(Map<String, Object> map) throws Exception{
-		return (List<Map<String,Object>>)selectList("goods.selectMemberList",map);
+		return (List<Map<String,Object>>)selectList("getUtils.selectAirplane",map);
 	}
 	
 }

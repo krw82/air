@@ -29,6 +29,7 @@ public class reservationController {
 	@RequestMapping(value="reservationForm") //좌석 선택 페이지
 	public ModelAndView loginForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		commandMap.put("FLYING_NUMBER",request.getParameter("flying_number"));
 		List<Map<String,Object>>board = reService.reservationSelect(commandMap.getMap());
 		mv.addObject("se", board);
 		List arr=new ArrayList();
@@ -50,9 +51,10 @@ public class reservationController {
 
 		mv.addObject("map", map);
 		
-		
+		mv.addObject("flying_number",request.getParameter("flying_number"));
 		
 		mv.setViewName("reservation/reservationForm");
+		
 		return mv;
 		
 	}
@@ -61,6 +63,7 @@ public class reservationController {
 	
 	public ModelAndView SeatAjax(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("jsonView");
+		commandMap.put("FLYING_NUMBER",request.getParameter("flying_number"));
 		List<Map<String,Object>>board = reService.reservationSelect(commandMap.getMap());	
 		List arr2= new ArrayList();
 		for (Map obj : board) {
@@ -77,6 +80,7 @@ public class reservationController {
 	@RequestMapping(value="reservationCheck") //좌석 예약 확인 페이지
 	public ModelAndView reservationCheck(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		Map<String,Object>board = reService.selectAir(commandMap.getMap());
 		HttpSession session = request.getSession();
 		//세션 아이디 넣어야함!!!!!!
@@ -93,9 +97,21 @@ public class reservationController {
 	}
 	@RequestMapping(value="pay") //카카오페이
 	public ModelAndView pay(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		
 		HttpSession session = request.getSession();
+		
+		
+		
+		
+		session.setAttribute("ID","21b"); //지워야함
+		session.setAttribute("MEMBER_NUMBER","02");
+		
+		
+		commandMap.put("ID", session.getAttribute("ID"));
 		//아이디, member_number
 		SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
 		String ticket_number=format.format(new Date());
@@ -104,7 +120,7 @@ public class reservationController {
 		commandMap.put("SEAT",request.getParameter("SEAT"));
 		commandMap.put("TICKET_NUMBER",ticket_number);
 		commandMap.put("FLYING_NUMBER",request.getParameter("FLYING_NUMBER"));
-		commandMap.put("MEMBER_NUMBER","01");
+		commandMap.put("MEMBER_NUMBER",session.getAttribute("MEMBER_NUMBER"));
 		
 		reService.insertTicket(commandMap.getMap());
 		
@@ -153,8 +169,12 @@ public class reservationController {
 	@RequestMapping(value = "/sendMail")
     public ModelAndView sendMail(CommandMap commandMap, HttpServletRequest request)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		Map<String,Object>board = reService.selectTicket(commandMap.getMap());
 		HttpSession session=request.getSession();
+		commandMap.put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER"));
+		commandMap.put("FLTING_NUMBER",request.getParameter("FLYING_NUMBER"));
+		System.out.println(request.getParameter("FLYING_NUMBER"));
+		Map<String,Object>board = reService.selectTicket(commandMap.getMap());
+		
 		
         String subject = "test 메일";
         String content = "<table border =\"1\">\n"
@@ -190,32 +210,18 @@ public class reservationController {
         try {
             MimeMessage mail = mailSender.createMimeMessage();
             MimeMessageHelper mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
-            // true는 멀티파트 메세지를 사용하겠다는 의미
-            
-            /*
-               * 단순한 텍스트 메세지만 사용시엔 아래의 코드도 사용 가능 
-             * MimeMessageHelper mailHelper = new MimeMessageHelper(mail,"UTF-8");
-             */
-            
             mailHelper.setFrom(from);
-            // 빈에 아이디 설정한 것은 단순히 smtp 인증을 받기 위해 사용 따라서 보내는이(setFrom())반드시 필요
-            // 보내는이와 메일주소를 수신하는이가 볼때 모두 표기 되게 원하신다면 아래의 코드를 사용하시면 됩니다.
-            //mailHelper.setFrom("보내는이 이름 <보내는이 아이디@도메인주소>");
+         
             mailHelper.setTo(to);
             mailHelper.setSubject(subject);
             mailHelper.setText(content, true);
-            // true는 html을 사용하겠다는 의미입니다.
-            
-            /*
-             * 단순한 텍스트만 사용하신다면 다음의 코드를 사용하셔도 됩니다. mailHelper.setText(content);
-             */
            
             mailSender.send(mail);
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-        mv.setViewName("reservation/reservationForm");
+        mv.setViewName("redirect:/AriplaneSerch");
         return mv;
         
     }
