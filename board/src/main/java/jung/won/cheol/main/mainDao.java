@@ -13,4 +13,12 @@ public class mainDao extends rootDao{
 		return (List<Map<String,Object>>)selectList("getUtils.selectAirplane",map);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> ticketAjax(Map<String, Object> map) throws Exception{
+		return (Map<String,Object>)selectOne("getUtils.ticketAjax",map);
+	}
+	
+	
+	
+	
 }

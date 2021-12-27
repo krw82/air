@@ -15,6 +15,23 @@
               select * from airplane_member where id=#{ID}
         ]]>
         </select>
+     
+     <insert parameterType="hashmap" id="PostMember">
+                        <![CDATA[
+    insert into airplane_member values(
+    		 #{ID},
+   			 #{NAME},
+   			 #{PASSWORD},
+   			 #{ADDRESS},
+   			 #{PHONE_NUMBER},
+    		 #{EMAIL},
+    	 	 MEMBER_SEQ.NEXTVAL
+    	 	 )
+
+        ]]>
+        </insert>
+        
+        
       
 	
         </mapper>

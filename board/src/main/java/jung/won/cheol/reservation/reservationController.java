@@ -105,12 +105,6 @@ public class reservationController {
 		HttpSession session = request.getSession();
 		
 		
-		
-		
-		session.setAttribute("ID","21b"); //지워야함
-		session.setAttribute("MEMBER_NUMBER","02");
-		
-		
 		commandMap.put("ID", session.getAttribute("ID"));
 		//아이디, member_number
 		SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");

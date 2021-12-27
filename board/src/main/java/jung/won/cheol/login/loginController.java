@@ -24,7 +24,13 @@ public class loginController {
 	
 	public ModelAndView login(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("login/loginForm");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("ID")!=null || session.getAttribute("MEMBER_NUMBER")!=null) {
+			mv.setViewName("redirect:/AriplaneSerch");
+		}else {
+			mv.setViewName("login/loginForm");
+		}
+		
 		
 		return mv;
 		
@@ -47,10 +53,50 @@ public class loginController {
 	public ModelAndView success(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
+		commandMap.put("ID", request.getParameter("ID"));
+		Map<String,Object>board = loginService.login(commandMap.getMap());	
 		session.setAttribute("ID",request.getParameter("ID"));
-		mv.setViewName("search/search");
+		session.setAttribute("MEMBER_NUMBER", board.get("MEMBER_NUMBER"));
+		
+		mv.setViewName("redirect:/AriplaneSerch");
 		return mv;
 		
 	}
+@RequestMapping(value="joinForm") // 회원가입
+	
+	public ModelAndView join(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/login/join");
+		return mv;
+		
+	}
+	
+@RequestMapping(value="join",method=RequestMethod.POST) // 회원가입
+	
+	public ModelAndView joinSubmit(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		loginService.PostMember(commandMap.getMap());
+		mv.setViewName("redirect:/login");
+		return mv;
+		
+	}
+	
+@RequestMapping(value="logout") // 로그아웃
+	
+	public ModelAndView logout(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		mv.setViewName("redirect:/login");
+		return mv;
+		
+	}
+	
+	
+	
+	
+	
 
 }

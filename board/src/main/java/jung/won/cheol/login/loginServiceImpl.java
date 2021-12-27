@@ -18,5 +18,12 @@ public class loginServiceImpl implements loginservice{
 		// TODO Auto-generated method stub
 		return loginDao.login(map);
 	}
+
+	@Override
+	public void PostMember(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		loginDao.PostMember(map);
+		
+	}
 	
 }

@@ -12,5 +12,10 @@ public class loginDao extends rootDao{
 	public Map<String, Object> login(Map<String, Object> map) throws Exception{
 		return (Map<String,Object>)selectOne("getUtils.searchMemberId",map);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public void  PostMember(Map<String, Object> map) throws Exception{
+		insert("getUtils.PostMember",map);
+	}
+	
 }

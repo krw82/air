@@ -21,4 +21,11 @@ public class mainServiceImpl implements mainService{
 		return mainDao.selectAll(map);
 	}
 
+
+	@Override
+	public Map<String, Object> ticketAjax(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return mainDao.ticketAjax(map);
+	}
+
 }

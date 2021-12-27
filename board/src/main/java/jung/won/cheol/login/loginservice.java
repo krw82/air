@@ -8,4 +8,6 @@ import jung.won.cheol.root.rootDao;
 public interface loginservice  {
 	public Map<String, Object> login(Map<String, Object> map) throws Exception;
 	
+	public void  PostMember(Map<String, Object> map) throws Exception;
+	
 }

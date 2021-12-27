@@ -80,7 +80,7 @@ var bool=true;
 </head>
 <body>
 <form action="/success" method="POST" onsubmit="return login();">
-<table>
+<table border="1">
 	<tr>
 		<td>
 			아이디
@@ -94,7 +94,7 @@ var bool=true;
 			비밀번호
 		</td>
 		<td>
-			<input type="text" name="PASSWORD" id="PASSWORD">
+			<input type="password" name="PASSWORD" id="PASSWORD">
 		</td>
 	</tr>
 
@@ -103,5 +103,8 @@ var bool=true;
 
 <input type="submit">
 </form>
+<a href="/joinForm">
+<input type="button" value="회원가입">
+</a>
 </body>
 </html>
